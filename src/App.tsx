@@ -1,10 +1,10 @@
-import { Button } from '@mui/material';
 import './App.css';
+import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 
 function App() {
   return (
    <div>
-    <Button variant="contained">Number</Button>
+    <ShoppingCart />
    </div>
   );
 }
