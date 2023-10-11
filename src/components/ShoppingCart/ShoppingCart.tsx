@@ -46,11 +46,28 @@ function ShoppingCart() {
   // Initialized to the constant for now until we can actually add products then <>
   const [products, setProducts] = useState(PRODUCTS);
 
-  // 👇 MAKE THIS NOT JIGGLE THE ARRAY AROUND
-  const updateProduct = (product: IProduct) => {
-    const newProducts = products.filter((p) => p.name !== product.name);
+  const updateQty = (productName: string, dir: "up" | "down") => {
+    const updatedProducts = [...products];
+    const idx = updatedProducts.findIndex((p) => p.name === productName);
+    const qty = updatedProducts[idx].qty;
 
-    setProducts([...newProducts, product]);
+    if (dir === "up") {
+      updatedProducts[idx].qty = qty + 1;
+    } else {
+      if (qty > 1) {
+        updatedProducts[idx].qty = qty - 1;
+      } else {
+        if (
+          window.confirm(
+            `Are you sure you want to remove ${productName} from your cart?`
+          )
+        ) {
+          updatedProducts.splice(idx, 1);
+        }
+      }
+    }
+
+    setProducts(updatedProducts);
   };
 
   return (
@@ -58,9 +75,7 @@ function ShoppingCart() {
       <h1>Your cart from Chick-fil-A</h1>
       <Button variant="contained">Checkout</Button>
       {products.map((item) => {
-        return (
-          <ShoppingCartItem product={item} updateProduct={updateProduct} />
-        );
+        return <ShoppingCartItem product={item} updateQty={updateQty} />;
       })}
     </Box>
   );

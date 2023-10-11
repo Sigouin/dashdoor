@@ -4,33 +4,22 @@ import "./ShoppingCartItem.css";
 
 interface IShoppingCartItemProps {
   product: IProduct;
-  updateProduct: (product: IProduct) => void;
+  updateQty: (name: string, dir: "up" | "down") => void;
 }
 
-interface IQuantityButtonProps {
-  quantity: number;
-}
-
-function ShoppingCartItem({ product, updateProduct }: IShoppingCartItemProps) {
+function ShoppingCartItem({ product, updateQty }: IShoppingCartItemProps) {
   const { name, img, description, price, qty } = product;
 
-  const QuantityButton = ({ quantity }: IQuantityButtonProps) => {
-    const [q, setQ] = useState(quantity);
-
-    function updateQ(dir: "inc" | "dec") {
-      dir === "inc" ? setQ(q + 1) : setQ(q - 1);
-
-      updateProduct({
-        ...product,
-        qty: q,
-      });
-    }
+  const QuantityButton = () => {
+    const update = (dir: "up" | "down") => {
+      updateQty(name, dir);
+    };
 
     return (
       <div>
-        <button onClick={() => updateQ("dec")}>-</button>
-        <div>{q}</div>
-        <button onClick={() => updateQ("inc")}>+</button>
+        <button onClick={() => update("down")}>-</button>
+        <div>{qty}</div>
+        <button onClick={() => update("up")}>+</button>
       </div>
     );
   };
@@ -44,7 +33,7 @@ function ShoppingCartItem({ product, updateProduct }: IShoppingCartItemProps) {
         <strong className="product-price">{price}</strong>
       </div>
       <div>
-        <QuantityButton quantity={qty} />
+        <QuantityButton />
       </div>
     </div>
   );
