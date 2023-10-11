@@ -1,11 +1,11 @@
-import './App.css';
-import ShoppingCart from './components/ShoppingCart/ShoppingCart';
+import "./App.css";
+import DashDrawer from "./components/ShoppingCart/DashDrawer";
 
 function App() {
   return (
-   <div>
-    <ShoppingCart />
-   </div>
+    <div>
+      <DashDrawer />
+    </div>
   );
 }
 
