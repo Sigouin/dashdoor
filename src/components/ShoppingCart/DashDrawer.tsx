@@ -5,7 +5,7 @@ import ShoppingCart from "./ShoppingCart";
 import { ShoppingBasket } from "@mui/icons-material";
 
 export default function DashDrawer() {
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const [drawerOpen, setDrawerOpen] = React.useState(true); // TODO: UNDO THIS!!!!
 
   // #For a11y
   const toggleDrawer = (isOpen: boolean) => {
@@ -27,13 +27,7 @@ export default function DashDrawer() {
       <Button variant="contained" color="error" onClick={toggleDrawer(true)}>
         <ShoppingBasket />
       </Button>
-      <Drawer
-        anchor={"right"}
-        open={drawerOpen}
-        onClose={toggleDrawer(false)}
-        onClick={toggleDrawer(false)}
-        onKeyDown={toggleDrawer(false)}
-      >
+      <Drawer anchor={"right"} open={drawerOpen} onClose={toggleDrawer(false)}>
         <ShoppingCart />
       </Drawer>
     </div>
