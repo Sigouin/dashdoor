@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Box, Button } from "@mui/material";
 import ShoppingCartItem from "./ShoppingCartItem";
-import { HandymanOutlined } from "@mui/icons-material";
 
 export interface IProduct {
   name: string;

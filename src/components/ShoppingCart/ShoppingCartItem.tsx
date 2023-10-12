@@ -1,4 +1,3 @@
-import { MouseEvent, useState } from "react";
 import { IProduct } from "./ShoppingCart";
 import "./ShoppingCartItem.css";
 
