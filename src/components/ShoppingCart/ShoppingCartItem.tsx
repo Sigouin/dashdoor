@@ -1,4 +1,4 @@
-import { IProduct } from "./ShoppingCart";
+import { IProduct } from "../ProductList";
 import "./ShoppingCartItem.css";
 
 interface IShoppingCartItemProps {
