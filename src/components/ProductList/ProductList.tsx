@@ -1,9 +1,22 @@
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
+
 export interface IProduct {
   name: string;
   img: string;
   description: string;
   price: number;
   qty: number;
+}
+
+interface IProductProps {
+  product: IProduct;
 }
 
 export const PRODUCTS: IProduct[] = [
@@ -36,3 +49,38 @@ export const PRODUCTS: IProduct[] = [
     qty: 1,
   },
 ];
+
+// component for product
+// component for product list which renders product
+// refactor store to store shopping cart list and ass functions
+// product comp clickable to be added to shopping cart
+// refactor shopping cart component to pull from store
+// finish css for everything
+const Product = (props: IProductProps) => {
+  return (
+    <Card sx={{ width: 140 }}>
+      <CardMedia
+        sx={{ height: 140 }}
+        image={props.product.img}
+        title={props.product.name}
+      />
+      <CardContent>
+        <Typography>{props.product.name}</Typography>
+        <Typography>{props.product.price}</Typography>
+      </CardContent>
+      <CardActions>
+        <Button>Add to cart.</Button>
+      </CardActions>
+    </Card>
+  );
+};
+
+export const ProductList = () => {
+  return (
+    <>
+      {PRODUCTS.map((data) => {
+        return <Product product={data} />;
+      })}
+    </>
+  );
+};

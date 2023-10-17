@@ -5,7 +5,7 @@ import ShoppingCart from "./ShoppingCart";
 import { ShoppingBasket } from "@mui/icons-material";
 
 export default function DashDrawer() {
-  const [drawerOpen, setDrawerOpen] = React.useState(true); // TODO: UNDO THIS!!!!
+  const [drawerOpen, setDrawerOpen] = React.useState(false); // TODO: UNDO THIS!!!!
 
   // #For a11y
   const toggleDrawer = (isOpen: boolean) => {
