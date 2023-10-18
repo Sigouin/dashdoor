@@ -1,18 +1,22 @@
 import { create } from "zustand";
 import { IProduct } from "../components/ProductList";
 
-
-
-interface IState {
-    products: IProduct[];
-  }
+export interface IStore {
+  cart: IProduct[];
+  addToCart: (newProduct: IProduct) => void;
+}
   
-  const useProductStore = create((set) => ({
-    products: [],
-    addProduct: (newProduct: IProduct) =>
-      set((state: IState) => ({
-        products: [...state.products, newProduct],
-      })),
+  // hook up to where button adds to console log
+
+  const useProductStore = create<IStore>((set) => ({
+    cart: [],
+    addToCart: (newProduct: IProduct) => {
+      return set((store: IStore) => {
+        return {
+          cart: [...store.cart, newProduct]
+        }
+      })
+    }
   }));
 
   export default useProductStore

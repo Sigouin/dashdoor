@@ -6,6 +6,7 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import useProductStore from "../../store/store";
 
 export interface IProduct {
   name: string;
@@ -13,6 +14,7 @@ export interface IProduct {
   description: string;
   price: number;
   qty: number;
+  id: number;
 }
 
 interface IProductProps {
@@ -26,6 +28,7 @@ export const PRODUCTS: IProduct[] = [
     description: "White Bun (Buttered)",
     price: 6.45,
     qty: 1,
+    id: 1,
   },
   {
     name: "Chick-fil-A® Nuggets",
@@ -33,6 +36,7 @@ export const PRODUCTS: IProduct[] = [
     description: "8 ct Chick-fil-A® Nuggets",
     price: 6.49,
     qty: 1,
+    id: 2,
   },
   {
     name: "Chick-fil-A Waffle Potato Fries®",
@@ -40,6 +44,7 @@ export const PRODUCTS: IProduct[] = [
     description: "Medium Chick-fil-A Waffle Potato Fries®",
     price: 6.45,
     qty: 1,
+    id: 3,
   },
   {
     name: "Freshly-Brewed Iced Tea Sweetened",
@@ -47,6 +52,7 @@ export const PRODUCTS: IProduct[] = [
     description: "Medium Freshly-Brewed Iced Tea Sweetened",
     price: 2.89,
     qty: 1,
+    id: 4,
   },
 ];
 
@@ -57,6 +63,14 @@ export const PRODUCTS: IProduct[] = [
 // refactor shopping cart component to pull from store
 // finish css for everything
 const Product = (props: IProductProps) => {
+  const { addToCart } = useProductStore((state) => {
+    const { addToCart } = state;
+    return { addToCart };
+  });
+  const handleProductAdd = () => {
+    addToCart(props.product);
+  };
+
   return (
     <Card sx={{ width: 140 }}>
       <CardMedia
@@ -69,7 +83,7 @@ const Product = (props: IProductProps) => {
         <Typography>{props.product.price}</Typography>
       </CardContent>
       <CardActions>
-        <Button>Add to cart.</Button>
+        <Button onClick={handleProductAdd}>Add to cart</Button>
       </CardActions>
     </Card>
   );
@@ -78,8 +92,8 @@ const Product = (props: IProductProps) => {
 export const ProductList = () => {
   return (
     <>
-      {PRODUCTS.map((data) => {
-        return <Product product={data} />;
+      {PRODUCTS.map((data, i) => {
+        return <Product product={data} key={`product-${data.id}-${i}`} />;
       })}
     </>
   );
