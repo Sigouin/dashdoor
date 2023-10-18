@@ -56,17 +56,13 @@ export const PRODUCTS: IProduct[] = [
   },
 ];
 
-// component for product
-// component for product list which renders product
-// refactor store to store shopping cart list and ass functions
-// product comp clickable to be added to shopping cart
 // refactor shopping cart component to pull from store
+// reimplement quatitiy update
 // finish css for everything
+
 const Product = (props: IProductProps) => {
-  const { addToCart } = useProductStore((state) => {
-    const { addToCart } = state;
-    return { addToCart };
-  });
+  const addToCart = useProductStore((store) => store.addToCart);
+
   const handleProductAdd = () => {
     addToCart(props.product);
   };

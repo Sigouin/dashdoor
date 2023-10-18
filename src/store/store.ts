@@ -5,11 +5,12 @@ export interface IStore {
   cart: IProduct[];
   addToCart: (newProduct: IProduct) => void;
 }
-  
-  // hook up to where button adds to console log
 
   const useProductStore = create<IStore>((set) => ({
+    // list of products in the cart
     cart: [],
+
+    // methods to modify the cart
     addToCart: (newProduct: IProduct) => {
       return set((store: IStore) => {
         return {
