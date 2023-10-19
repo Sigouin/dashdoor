@@ -1,17 +1,19 @@
+import useProductStore from "../../store/store";
 import { IProduct } from "../ProductList";
 import "./ShoppingCartItem.css";
 
 interface IShoppingCartItemProps {
   product: IProduct;
-  updateQty: (name: string, dir: "up" | "down") => void;
 }
 
-function ShoppingCartItem({ product, updateQty }: IShoppingCartItemProps) {
+function ShoppingCartItem({ product }: IShoppingCartItemProps) {
   const { name, img, description, price, qty } = product;
+
+  const updateQuantity = useProductStore((store) => store.updateQuantity);
 
   const QuantityButton = () => {
     const update = (dir: "up" | "down") => {
-      updateQty(name, dir);
+      updateQuantity(name, dir);
     };
 
     return (

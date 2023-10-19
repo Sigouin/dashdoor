@@ -14,9 +14,6 @@ function ShoppingCart() {
             return (
               <ShoppingCartItem
                 product={item}
-                updateQty={() => {
-                  console.log("tbd");
-                }}
                 key={`CartItem-${item.id}-${i}`}
               />
             );

@@ -56,8 +56,7 @@ export const PRODUCTS: IProduct[] = [
   },
 ];
 
-// refactor shopping cart component to pull from store
-// reimplement quatitiy update
+// reimplement quantity update
 // finish css for everything
 
 const Product = (props: IProductProps) => {
