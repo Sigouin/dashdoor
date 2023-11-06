@@ -7,6 +7,8 @@ import {
   Typography,
 } from "@mui/material";
 import useProductStore from "../../store/store";
+import "./ProductList.css";
+import cfa from "../../assets/cfa.png";
 
 export interface IProduct {
   name: string;
@@ -67,29 +69,34 @@ const Product = (props: IProductProps) => {
   };
 
   return (
-    <Card sx={{ width: 140 }}>
-      <CardMedia
-        sx={{ height: 140 }}
-        image={props.product.img}
-        title={props.product.name}
-      />
-      <CardContent>
-        <Typography>{props.product.name}</Typography>
-        <Typography>{props.product.price}</Typography>
-      </CardContent>
-      <CardActions>
-        <Button onClick={handleProductAdd}>Add to cart</Button>
-      </CardActions>
-    </Card>
+    <div className="product__list">
+      <Card sx={{ width: 140 }}>
+        <CardMedia
+          sx={{ height: 140 }}
+          image={props.product.img}
+          title={props.product.name}
+        />
+        <CardContent>
+          <Typography>{props.product.name}</Typography>
+          <Typography>{props.product.price}</Typography>
+        </CardContent>
+        <CardActions>
+          <Button onClick={handleProductAdd}>Add to cart</Button>
+        </CardActions>
+      </Card>
+    </div>
   );
 };
 
 export const ProductList = () => {
   return (
     <>
-      {PRODUCTS.map((data, i) => {
-        return <Product product={data} key={`product-${data.id}-${i}`} />;
-      })}
+      <img src={cfa} alt="Chick-Fil-A"></img>
+      <div className="product__list">
+        {PRODUCTS.map((data, i) => {
+          return <Product product={data} key={`product-${data.id}-${i}`} />;
+        })}
+      </div>
     </>
   );
 };

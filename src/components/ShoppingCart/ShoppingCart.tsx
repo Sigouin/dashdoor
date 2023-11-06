@@ -1,14 +1,29 @@
 import useProductStore from "../../store/store";
 import { Box, Button } from "@mui/material";
 import ShoppingCartItem from "./ShoppingCartItem";
+import "./ShoppingCart.css";
+import { red } from "@mui/material/colors";
 
 function ShoppingCart() {
   const cart = useProductStore((store) => store.cart);
 
   return (
     <Box sx={{ width: 350 }} role="presentation">
-      <h1>Your cart from Chick-fil-A</h1>
-      <Button variant="contained">Checkout</Button>
+      <div className="cart">
+        <span>Your cart from</span>
+        <br></br>
+        <strong>Chick-fil-A</strong>
+      </div>
+      <Button
+        variant="contained"
+        sx={{
+          borderRadius: "50px",
+          bgcolor: "red",
+          "&:hover": { backgroundColor: "red" },
+        }}
+      >
+        Checkout
+      </Button>
       {cart.length
         ? cart.map((item, i) => {
             return (
@@ -18,7 +33,7 @@ function ShoppingCart() {
               />
             );
           })
-        : "Nothing in cart. You gon be hooongray"}
+        : "Your cart is empty. Add items to get started."}
     </Box>
   );
 }

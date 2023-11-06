@@ -1,0 +1,15 @@
+.cart {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 18px;
+    margin-top: 40px;
+    padding: 16px;
+    color:gray;
+}
+
+strong {
+    color: black;
+    font-size: 24px;
+}
+
