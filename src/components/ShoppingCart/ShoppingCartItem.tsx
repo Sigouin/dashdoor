@@ -1,6 +1,7 @@
 import useProductStore from "../../store/store";
 import { IProduct } from "../ProductList";
 import "./ShoppingCartItem.css";
+import AddIcon from "@mui/icons-material/Add";
 
 interface IShoppingCartItemProps {
   product: IProduct;
@@ -17,9 +18,9 @@ function ShoppingCartItem({ product }: IShoppingCartItemProps) {
     };
 
     return (
-      <div>
+      <div className="counter">
         <button onClick={() => update("down")}>-</button>
-        <div>{qty}</div>
+        <div>{qty}x</div>
         <button onClick={() => update("up")}>+</button>
       </div>
     );

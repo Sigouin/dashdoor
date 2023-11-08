@@ -46,6 +46,10 @@
   font-size: 14px;
 }
 
+.counter {
+  display: flex;
+}
+
 .product-quantity {
 
 }

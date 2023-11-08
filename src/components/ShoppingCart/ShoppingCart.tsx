@@ -2,7 +2,6 @@ import useProductStore from "../../store/store";
 import { Box, Button } from "@mui/material";
 import ShoppingCartItem from "./ShoppingCartItem";
 import "./ShoppingCart.css";
-import { red } from "@mui/material/colors";
 
 function ShoppingCart() {
   const cart = useProductStore((store) => store.cart);
@@ -17,6 +16,7 @@ function ShoppingCart() {
       <Button
         variant="contained"
         sx={{
+          width: 1,
           borderRadius: "50px",
           bgcolor: "red",
           "&:hover": { backgroundColor: "red" },
