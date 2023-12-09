@@ -8,7 +8,6 @@ import {
 } from "@mui/material";
 import useProductStore from "../../store/store";
 import "./ProductList.css";
-import cfa from "../../assets/cfa.png";
 
 export interface IProduct {
   name: string;
@@ -70,7 +69,7 @@ const Product = (props: IProductProps) => {
 
   return (
     <div className="product__list">
-      <Card sx={{ width: 140 }}>
+      <Card sx={{ width: 180 }}>
         <CardMedia
           sx={{ height: 140 }}
           image={props.product.img}
@@ -91,8 +90,7 @@ const Product = (props: IProductProps) => {
 export const ProductList = () => {
   return (
     <>
-      <img src={cfa} alt="Chick-Fil-A"></img>
-      <div className="product__list">
+      <div className="product__list container">
         {PRODUCTS.map((data, i) => {
           return <Product product={data} key={`product-${data.id}-${i}`} />;
         })}
